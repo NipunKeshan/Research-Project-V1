@@ -3,7 +3,6 @@ dec
 infobits
 qid
 fid
-pid
 exptime
 seeing
 airmass
@@ -12,4 +11,3 @@ maglimit
 cd11
 cd22
 ipac_gid
-filtercode
