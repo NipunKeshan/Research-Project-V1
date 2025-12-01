@@ -1,0 +1,15 @@
+ra
+dec
+infobits
+qid
+fid
+pid
+exptime
+seeing
+airmass
+moonillf
+maglimit
+cd11
+cd22
+ipac_gid
+filtercode
