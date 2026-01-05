@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZTF Astro-Classifier</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> 
+    <!-- Note: FontAwesome script might need a valid kit or CDN. Using a trusted CDN for basic icons if kit fails. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Astro<span style="color:var(--secondary-color)">Mind</span></div>
+        <ul class="nav-links">
+            <li><a href="#welcome" class="active">Welcome</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#system">System Overview</a></li>
+            <li><a href="#models">Models</a></li>
+        </ul>
+    </nav>
+
+    <!-- Welcome Section (Hero Slider) -->
+    <section id="welcome">
+        <div class="slider">
+            <div class="slide active" style="background-image: url('images/galaxy.png');"></div>
+            <div class="slide" style="background-image: url('images/nebula.png');"></div>
+            <div class="slide" style="background-image: url('images/observatory.png');"></div>
+        </div>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Explore the Transient Universe</h1>
+                <p>Advanced AI System for Zwicky Transient Facility Data Classification</p>
+                <a href="#system" class="btn">Discover More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-container">
+            <img src="images/profile.png" alt="Nipun Senevirathna" class="profile-img">
+            <div class="about-details">
+                <h3>Nipun Senevirathna</h3>
+                <p><span class="highlight">Age:</span> 21</p>
+                <p><span class="highlight">University:</span> SLIIT</p>
+                <p><span class="highlight">Role:</span> Lead Researcher & Developer</p>
+                <p>Passionate about Astronomy and Artificial Intelligence. Dedicated to solving complex problems in transient astronomy using state-of-the-art Deep Learning techniques. This project represents the culmination of extensive research into Contrastive Learning for observation-context embedding.</p>
+                <br>
+                <p><i>"The universe is full of magical things patiently waiting for our wits to grow sharper."</i></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <h2 class="section-title">Research Proposal</h2>
+        <div class="research-card">
+            <h3>Overview</h3>
+            <p>The Zwicky Transient Facility (ZTF) generates a massive stream of alerts, necessitating automated classification systems. Traditional methods often overlook the "observation context" (e.g., seeing conditions, moon illumination, airmass), which critically biases detectability. This research proposes a Self-Supervised Contrastive Learning framework.</p>
+        </div>
+        <div class="research-card">
+            <h3>Methodology: Contrastive Learning (SimCLR)</h3>
+            <p>We employ a tabular SimCLR approach. By treating different augmentations (noise, jitter, masking) of the same observation metadata as "positive pairs", the model learns to map observations to a latent space where similar observing conditions cluster together, independent of the specific transient object type. This allows for robust "Detectability" labeling.</p>
+        </div>
+        <div class="research-card">
+            <h3>Key Objectives</h3>
+            <ul>
+                <li><i class="fas fa-check-circle" style="color:var(--accent-color)"></i> Develop an Observation-Context Encoder using SimCLR.</li>
+                <li><i class="fas fa-check-circle" style="color:var(--accent-color)"></i> Generate latent embeddings for all ZTF observations.</li>
+                <li><i class="fas fa-check-circle" style="color:var(--accent-color)"></i> Cluster embeddings to discover inherent "Detectability Modes".</li>
+                <li><i class="fas fa-check-circle" style="color:var(--accent-color)"></i> Integrate with image data for multi-modal classification (Future Work).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- System Overview Section -->
+    <section id="system">
+        <h2 class="section-title">System Overview</h2>
+        <div class="flow-container">
+            <div class="flow-step">
+                <div class="icon"><i class="fas fa-satellite-dish"></i></div>
+                <h3>1. Observe</h3>
+                <p>ZTF Telescope captures the sky. Data includes Field ID, Filter, Seeing, Airmass, and Exposure time.</p>
+            </div>
+            <div class="flow-step">
+                <div class="icon"><i class="fas fa-database"></i></div>
+                <h3>2. Data Ingestion</h3>
+                <p>Raw observation metadata is standardized. Continuous variables are scaled; categorical IDs are encoded.</p>
+            </div>
+            <div class="flow-step">
+                <div class="icon"><i class="fas fa-brain"></i></div>
+                <h3>3. Encoder</h3>
+                <p>Our pre-trained SimCLR Encoder processes the feature vector into a high-dimensional embedding (256-dim).</p>
+            </div>
+            <div class="flow-step">
+                <div class="icon"><i class="fas fa-project-diagram"></i></div>
+                <h3>4. Clustering</h3>
+                <p>The embedding is mapped to a cluster (e.g., Cluster 5: "High Airmass, Low Seeing") to determine data quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models / Prediction Section -->
+    <section id="models">
+        <h2 class="section-title">Model Prediction</h2>
+        <div class="model-interface">
+            <div class="input-panel">
+                <h3>Observation Parameters</h3>
+                <form id="prediction-form">
+                    <div class="form-group">
+                        <label>Seeing (fwhm)</label>
+                        <input type="number" step="0.1" value="2.1" placeholder="e.g. 2.1">
+                    </div>
+                    <div class="form-group">
+                        <label>Airmass</label>
+                        <input type="number" step="0.1" value="1.2" placeholder="e.g. 1.2">
+                    </div>
+                    <div class="form-group">
+                        <label>Moon Illumination (0-1)</label>
+                        <input type="number" step="0.01" value="0.15" placeholder="e.g. 0.15">
+                    </div>
+                    <div class="form-group">
+                        <label>Filter Band</label>
+                        <select>
+                            <option>ZTF g</option>
+                            <option>ZTF r</option>
+                            <option>ZTF i</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="analyze-btn">Analyze Transient</button>
+                </form>
+            </div>
+
+            <div class="output-panel" id="output-panel">
+                <div class="result-loader" id="loader"></div>
+                <p id="placeholder-text" style="color:#888;">Enter parameters and click Analyze to see results.</p>
+                
+                <div class="result-content" id="result-content">
+                    <h3 style="color:var(--accent-color); margin-bottom:15px;">Analysis Complete</h3>
+                    <img src="" id="result-img" class="result-image" alt="Predicted Transient">
+                    <div class="result-data">
+                        <p><strong>Detected Type:</strong> <span id="res-type" style="color:var(--secondary-color); font-size:1.2rem;">Supernova (SN Ia)</span></p>
+                        <p><strong>Confidence:</strong> <span id="res-conf">98.5%</span></p>
+                        <p><strong>Context Quality:</strong> <span id="res-qual" style="color:#00ff00;">Excellent</span></p>
+                        <p style="margin-top:10px; font-size:0.9rem; color:#aaa;">Based on cluster analysis of observation metadata.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
